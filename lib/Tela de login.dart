@@ -1,20 +1,8 @@
+// login_page.dart
+
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const FitMacroApp());
-}
-
-class FitMacroApp extends StatelessWidget {
-  const FitMacroApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
-    );
-  }
-}
+import 'tela_de_cadastro.dart'; // Importa a tela de cadastro
+import 'forgot_password_page.dart'; // Importa a tela de recuperação de senha// Importa a tela de recuperação de senha
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -26,7 +14,8 @@ class LoginPage extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           // Fundo com imagem
-          Image.asset('assets/images/bg_fitness.jpg', // coloque a imagem na pasta assets
+          Image.asset(
+            'assets/images/bg_fitness.jpg',
             fit: BoxFit.cover,
           ),
           // Sombra escura levemente transparente para melhorar contraste
@@ -39,7 +28,7 @@ class LoginPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 100),
 
                   // Campo de e-mail
                   TextField(
@@ -51,9 +40,16 @@ class LoginPage extends StatelessWidget {
                       fillColor: Colors.white.withOpacity(0.2),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
+                        borderSide: const BorderSide(color: Colors.red, width: 2),
                       ),
-                      prefixIcon: Image.asset('assets/images/logo.jpeg', height: 60),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: Colors.red, width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: Colors.red, width: 2),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -69,9 +65,16 @@ class LoginPage extends StatelessWidget {
                       fillColor: Colors.white.withOpacity(0.2),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
+                        borderSide: const BorderSide(color: Colors.red, width: 2),
                       ),
-                      prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: Colors.red, width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: Colors.red, width: 2),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -81,14 +84,26 @@ class LoginPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Navega para a tela de cadastro
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const SignUpPage()),
+                          );
+                        },
                         child: const Text(
                           'Crie sua conta',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // Navega para a tela de recuperação de senha
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const ForgotPasswordPage()),
+                          );
+                        },
                         child: const Text(
                           'Esqueci minha senha',
                           style: TextStyle(color: Colors.white),
@@ -112,7 +127,7 @@ class LoginPage extends StatelessWidget {
                       onPressed: () {},
                       child: const Text(
                         'Log-in',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
                   ),
@@ -120,20 +135,20 @@ class LoginPage extends StatelessWidget {
                   const SizedBox(height: 40),
 
                   // Logo na parte inferior
-                  Column(
-                    children: const [
-                      Icon(Icons.fitness_center, color: Colors.red, size: 40),
-                      SizedBox(height: 4),
-                      Text(
-                        'FITMACRO\nDIETA E BOA FORMA',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
+                  Image.asset(
+                    'assets/images/logo.jpeg',
+                    height: 80,
+                    color: Colors.white,
+                    colorBlendMode: BlendMode.modulate,
+                  ),
+                  const Text(
+                    'SAÚDE E BOA FORMA',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
                   ),
                 ],
               ),
