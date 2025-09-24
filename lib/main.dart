@@ -1,9 +1,25 @@
-// main.dart
 import 'package:flutter/material.dart';
-import 'Tela de login.dart'; // Importe a sua tela de login
+import 'package:flutter/services.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'Login_screen.dart';
+import 'registration_screen.dart';
+import 'forgot_password_screen.dart';
+import 'firebase_options.dart';
 
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
 
-void main() {
+  // Inicializa o Firebase corretamente para a plataforma atual
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  // Força orientação vertical (retrato)
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
   runApp(const MyApp());
 }
 
@@ -13,35 +29,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Fitmacro',
       debugShowCheckedModeBanner: false,
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tela Inicial'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Ir para o Login'),
-          onPressed: () {
-            // Usa Navigator.push para navegar para a LoginPage
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const LoginPage(),
-              ),
-            );
-          },
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        fontFamily: 'Montserrat',
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        scaffoldBackgroundColor: Colors.black, // Garante fundo escuro padrão
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
         ),
       ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/register': (context) => const RegistrationScreen(),
+        '/forgot-password': (context) => const ForgotPasswordScreen(),
+      },
     );
   }
 }

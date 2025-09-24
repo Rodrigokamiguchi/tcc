@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "390241627422",
+    "project_id": "fitmacro-d16e8",
+    "storage_bucket": "fitmacro-d16e8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390241627422:android:8ed9a33cd010c1bf1e2d0f",
+        "android_client_info": {
+          "package_name": "com.example.tcc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8r-aXaHChHN0b3dUTu8aXaDjv7_-IuJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
